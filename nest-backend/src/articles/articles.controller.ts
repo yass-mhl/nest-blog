@@ -16,9 +16,9 @@ export class ArticlesController {
         return this.articlesService.findAll();
     }
 
-    @Get()
-    findAll(@Res() res) {
-        const articles = this.articleService.findAll();
-        res.render('articles/index', { articles });
-    }
+    // @Get()
+    // findAll(@Res() res) {
+    //     const articles = this.articleService.findAll();
+    //     res.render('articles/index', { articles });
+    // }
 }
