@@ -16,4 +16,7 @@ export class ArticlesService {
         return this.articlesRepository.save(article);
       }
 
+    async findAll(): Promise<Article[]> {
+        return this.articlesRepository.find();
+    }
 }

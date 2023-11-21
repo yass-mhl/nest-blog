@@ -1,4 +1,4 @@
-import { Controller, Post, Body } from '@nestjs/common';
+import { Controller, Post, Body, Get } from '@nestjs/common';
 import { ArticlesService } from './articles.service';
 import { CreateArticleDto } from './create-article.dto';
 
@@ -11,5 +11,14 @@ export class ArticlesController {
         return this.articlesService.create(article);
     }
 
+    @Get()
+    async findAll() {
+        return this.articlesService.findAll();
+    }
 
+    @Get()
+    findAll(@Res() res) {
+        const articles = this.articleService.findAll();
+        res.render('articles/index', { articles });
+    }
 }
