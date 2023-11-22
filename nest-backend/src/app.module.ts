@@ -3,6 +3,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { ArticlesModule } from './articles/articles.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -16,6 +18,9 @@ import { ArticlesModule } from './articles/articles.module';
       database: process.env.DATABASE_NAME, // nom de la base de données
       entities: [__dirname + '/**/*.entity{.ts,.js}'], // emplacement des entités (modèles)
       synchronize: true, // cela synchronisera votre schéma de base de données avec les modèles chaque fois que l'application démarre
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'react-frontend/build'), // Assurez-vous que ce chemin est correct
     }),
   ],
   controllers: [AppController],

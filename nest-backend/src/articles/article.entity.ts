@@ -11,6 +11,9 @@ export class Article {
   @Column()
   content: string;
 
+  @Column()
+  author: string;
+
   // Add later User relation
 //   @Column()
 //   user_id: number;
